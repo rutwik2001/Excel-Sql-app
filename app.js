@@ -1,4 +1,6 @@
-require("dotenv").config()
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config()
+}
 const express = require('express');
 const fileUpload = require('express-fileupload');
 const path = require('path');
@@ -20,7 +22,7 @@ db = mysql.createConnection({
   host: process.env.host,
   user: process.env.user,
   password: process.env.password,
-  database: process.env.databse
+  database: process.env.database
 });
 
 db.connect(function(err) {
@@ -54,11 +56,11 @@ app.post('/', (req, res) => {
           for (var i=2; result.Sheet1.length > i; i++){
             var sql = 'INSERT INTO students (Name, Roll_no, Class) VALUES (?, ?, ?)';
             db.query(sql,[result.Sheet1[i].Name, result.Sheet1[i].Roll_no, result.Sheet1[i].Class], function (err, result) {
-            if (err) throw err;
-            console.log("1 record inserted");
+              if (err) throw err;
+              console.log("1 record inserted");
             });
           }
-          res.redirect("/")
+          res.redirect("/table");
           }
       });
 
