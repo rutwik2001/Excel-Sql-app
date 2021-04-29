@@ -43,12 +43,12 @@ app.post('/', (req, res) => {
     // Accessing the file by the <input> File name="target_file"
     let targetFile = req.files.target_file;
     //mv(path, CB function(err))
-    targetFile.mv(__dirname + '\\uploads' +"\\"+ targetFile.name, (err) => {
+    targetFile.mv(path.join(__dirname, "uploads", targetFile.name), (err) => {
         if (err){
           return res.status(500).send(err);
         } else {
           let result = importExcel({
-            sourceFile: __dirname + '\\uploads' +"\\"+ targetFile.name,
+            sourceFile: path.join(__dirname, "uploads", targetFile.name),
             header: {rows: 1},
             columnToKey: {A: 'Name', B: 'Roll_no', C: 'Class'},
             sheets: ['Sheet1']
