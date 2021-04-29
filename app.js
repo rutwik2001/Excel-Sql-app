@@ -97,5 +97,5 @@ app.post("/table", (req, res) => {
 // })
 
 
-
-app.listen(8888, () => console.log('Your app listening on port 3000'));
+const port = process.env.PORT ||8888
+app.listen(port, () => console.log('Your app listening on port 3000'));
