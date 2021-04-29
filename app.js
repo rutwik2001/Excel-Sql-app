@@ -17,10 +17,10 @@ app.use(fileUpload({
 app.use(express.static(__dirname + "/public"));
 
 db = mysql.createConnection({
-  host: 'localhost',
-  user: 'Rutwik',
-  password: 'Rutwik@2001',
-  database: 'excel'
+  host: process.env.host,
+  user: process.env.user,
+  password: process.env.password,
+  database: process.env.databse
 });
 
 db.connect(function(err) {
