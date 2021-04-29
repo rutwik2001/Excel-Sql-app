@@ -125,21 +125,14 @@ body{
           <h4>No Information</h4>
         <%} else {%>
           <%userData.forEach(function(data){%>
-            <%for (var i =0; i<userData.length; i++ ){%>
-              <%if(i%2 == 0){%>
+
                 <tr>
                   <td style="text-align: left;"><%= data.Name %></td>
                   <td style="text-align: left;"><%= data.Roll_no %></td>
                   <td style="text-align: left;"><%= data.Class %></td>
                 </tr>
-              <%} else {%>
-                <tr class="active-row">
-                  <td style="text-align: left;"><%= data.Name %></td>
-                  <td style="text-align: left;"><%= data.Roll_no %></td>
-                  <td style="text-align: left;"><%= data.Class %></td>
-                </tr>
-              <%}%>
-            <%}%>
+
+
 
           <%})%>
         <%}%>
