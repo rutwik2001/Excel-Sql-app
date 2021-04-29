@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Table</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style media="screen">
+      .styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: sans-serif;
+    min-width: 900px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    width: 70%;
+}
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+.styled-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+.styled-table th,
+.styled-table td {
+    padding: 12px 15px;
+}
+table{
+  margin: 0 auto;
+
+}
+body{
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    align-items: center;
+}
+
+.container{
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+[type="text"]{
+    border: 1px solid #cccccc;
+    background: #f9f9f9;
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 18px;
+    border-radius: 2px;
+
+}
+[type="submit"]{
+    cursor: pointer;
+    font-size: 16px;
+    background: #009879;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: 1px solid rgba(0,0,0,.1);
+    border-radius: 3px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+    </style>
+  </head>
+  <body>
+    <br><br><br>
+
+
+    <div class="container">
+
+      <button type="submit" style="min-width: 170px;" name="button"><a style="color:white;"href="/">Upload a Excel file</a></button>
+      <br><br><br>
+      <form class="" style="margin: 0 auto;"action="/table" method="post">
+        <div class="row">
+          <div class="col-lg-6">
+            <input type="text" style="max-width: 350px;margin-left:30px;"name="Name" placeholder="Enter the name">
+          </div>
+          <div class="col-lg-6">
+            <input type="text" style="max-width: 350px;margin-right:30px;" name="Roll_no" placeholder="Enter the roll no">
+
+          </div>
+        </div>
+
+
+        <br>
+        <button type="submit" style="min-width: 170px;" name="Submit">Submit</button>
+
+      </form>
+      <br><br>
+
+
+
+    <!-- <form class="" action="/table?_method=put" method="post">
+      <input type="text" name="Roll_no" placeholder="Enter the roll no">
+      <button type="submit" name="Submit">Submit</button>
+    </form> -->
+    <table style="margin: 0 auto;"class="styled-table">
+      <thead>
+        <tr>
+
+          <th>Name</th>
+          <th>Roll_no</th>
+          <th>Class</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%if (userData.length == 0) {%>
+          <h4>No Information</h4>
+        <%} else {%>
+          <%userData.forEach(function(data){%>
+            <%for (var i =0; i<userData.length; i++ ){%>
+              <%if(i%2 == 0){%>
+                <tr>
+                  <td style="text-align: left;"><%= data.Name %></td>
+                  <td style="text-align: left;"><%= data.Roll_no %></td>
+                  <td style="text-align: left;"><%= data.Class %></td>
+                </tr>
+              <%} else {%>
+                <tr class="active-row">
+                  <td style="text-align: left;"><%= data.Name %></td>
+                  <td style="text-align: left;"><%= data.Roll_no %></td>
+                  <td style="text-align: left;"><%= data.Class %></td>
+                </tr>
+              <%}%>
+            <%}%>
+
+          <%})%>
+        <%}%>
+      </tbody>
+
+
+
+
+
+
+</table>
+</div>
+
+  </body>
+</html>
